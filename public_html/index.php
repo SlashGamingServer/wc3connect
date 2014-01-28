@@ -2,8 +2,8 @@
 
 include("dbconnect.php");
 
-$username = "uakf.b";
-$sessionkey = rand(0, 4294967295); //random uint32
+$username = "";
+$sessionkey = rand( );
 $proxy = "";
 $startalert = true;
 
@@ -35,17 +35,6 @@ if(isset($_POST['proxy'])) {
 	//permanently update settings
 	databaseQuery("UPDATE wc3connect SET proxy = ?, startalert = ? WHERE id = ?", array($proxy, $startalert, $wc_id));
 }
-
-$template->assign_vars(array('SESSIONKEY' => $sessionkey,
-                             'LISTPATH' => $listpath,
-                             'ECUSERNAME' => $username_clean,
-                             'FILTER' => $filter,
-                             'PROXY' => $proxy,
-                             'PREFERRED' => $preferred,
-                             'WAR3PATH' => $war3path,
-                             'STARTALERT' => $startalert ? "true" : "false",
-                             'STARTALERT_ENABLED' => $startalert));
-
 ?>
 
 <html>
